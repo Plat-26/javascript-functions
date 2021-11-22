@@ -1,17 +1,52 @@
-function seed() {}
+function seed() {
+  const values = [];
+  for(let i = 0; i < arguments.length; i++) {
+      values[i] = arguments[i];
+  }
+  return values;
+}
 
-function same([x, y], [j, k]) {}
+function same([x, y], [j, k]) {
+  return x == j && y == k;
+}
 
 // The game state to search for `cell` is passed as the `this` value of the function.
-function contains(cell) {}
+function contains(cell) {
+  for(let i = 0; i < this.length; i++) {
+    if (this[i][0] == cell[0] && this[i][1] == cell[1]) {
+      return true;
+    }
+  } 
+  return false;
+}
 
-const printCell = (cell, state) => {};
+const printCell = (cell, state) => {
+  if(contains.call(state, cell)) {
+    return unescape('\u25A3');
+  } else {
+    return unescape('\u25A2');
+  }
+};
 
-const corners = (state = []) => {};
+const corners = (state = []) => {
+  if(state.length == 0) {
+    return [[0, 0], [0, 0]];
+  } else {
+    return [
+            [arguments[arguments.length - 1][0], arguments[0][1]], 
+            [arguments[0][0], arguments[arguments.length - 1][1]]
+          ];
+  }
+};
 
 const printCells = (state) => {};
 
-const getNeighborsOf = ([x, y]) => {};
+const getNeighborsOf = ([x, y]) => {
+  //create an array
+  //keep track of x and y index to avoid spill
+  //populate array as x and y varies 
+  //return the array
+};
 
 const getLivingNeighbors = (cell, state) => {};
 
